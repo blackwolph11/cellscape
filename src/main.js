@@ -1,6 +1,5 @@
 import './style.css';
 import { createControls } from './core/controls';
-
 import { createRenderer } from './core/renderer';
 import { createScene } from './core/scene';
 import { createCamera } from './core/camera';
@@ -32,14 +31,23 @@ window.addEventListener('resize', () => {
 });
 
 // Animation
+const clock = performance;
+
 function animate() {
-  requestAnimationFrame(animate);
 
-  cell.rotation.y += 0.003;
-  cell.userData.nucleus.rotation.y += 0.01;
+    requestAnimationFrame(animate);
 
-  controls.update();
-  renderer.render(scene, camera);
+    const t = clock.now();
+
+    cell.rotation.y += 0.0015;
+
+    if (cell.userData.animate) {
+        cell.userData.animate(t);
+    }
+
+    controls.update();
+
+    renderer.render(scene, camera);
 }
 
 animate();

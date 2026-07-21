@@ -4,7 +4,7 @@ export function createScene() {
 
     const scene = new THREE.Scene();
 
-    scene.background = new THREE.Color(0x081b33);
+    scene.background = new THREE.Color(0x04111f);
 
     return scene;
 

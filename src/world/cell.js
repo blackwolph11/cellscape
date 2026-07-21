@@ -109,6 +109,14 @@ export function createCell() {
     cell.add(mito);
 
 }
-    return cell;
+cell.userData.animate = function (time) {
+
+    const s = 1 + Math.sin(time * 0.0015) * 0.015;
+
+    cell.scale.set(s, s, s);
+
+};
+
+return cell;
 
 }
